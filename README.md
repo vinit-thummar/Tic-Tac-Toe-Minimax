@@ -1,6 +1,3 @@
-Here's a rephrased version of the provided text for "Ultimate Tic Tac Toe":
-
----
 
 **Advanced Tic Tac Toe**  
 This project develops an AI strategy for playing Advanced Tic Tac Toe, utilizing the Minimax algorithm with Alpha-Beta pruning optimization.  
