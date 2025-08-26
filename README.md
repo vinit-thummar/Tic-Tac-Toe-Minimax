@@ -1,40 +1,47 @@
-# ultimate-tic-tac-toe
-The code implements a strategy for playing Ultimate Tic Tac Toe using the Minimax algorithm with Alpha-Beta pruning.
-I designed it for the online [Bot Programming challenge by CodinGame](https://www.codingame.com/multiplayer/bot-programming/tic-tac-toe).
+Here's a rephrased version of the provided text for "Ultimate Tic Tac Toe":
 
-## Game rules
-Ultimate Tic Tac Toe is an advanced variant of the classic game of Tic Tac Toe that adds an additional strategic dimension to the gameplay. The basic rules of Tic Tac Toe remain the same, but the game board is divided into 9 sub-boards, and players must try to win both on the sub-boards and the main board. 
+---
+
+**Advanced Tic Tac Toe**  
+This project develops an AI strategy for playing Advanced Tic Tac Toe, utilizing the Minimax algorithm with Alpha-Beta pruning optimization.  
+It was initially created for the CodinGame Bot Programming competition.
+
+## Game Rules  
+Advanced Tic Tac Toe expands on traditional Tic Tac Toe, adding a layer of strategic complexity. The game board consists of 9 smaller Tic Tac Toe grids arranged within a larger main grid. Players must strategize not only to win individual sub-grids but also to align those victories to dominate the main grid.
 
 <div align='center'><img src='docs/empty-board.png' width=300></div>
 
-A player's move determines which sub-board the next player must play in. The next player's move must be made in the corresponding sub-board indicated by the previous player's move.
+Each player's move dictates the sub-grid where the opponent must play next, corresponding to the position of the previous move.  
 <div align='center'><img src='docs/move-2.png' width=300></div>
 
-If a player wins a sub-board, they claim that sub-board with their symbol (X or O). The sub-board is considered completed, and subsequent moves can be made in any open sub-board on the main board.
+Winning a sub-grid claims it for the player with their symbol (X or O), marking it as complete. Subsequent moves can then be made in any unclaimed or incomplete sub-grid.
 
-The objective is to win the game by either completing a line of three symbols (X or O) vertically, horizontally, or diagonally in a sub-board, or by winning three sub-boards in a row vertically, horizontally, or diagonally on the main board.
+The goal is to win by forming a line of three symbols (X or O) vertically, horizontally, or diagonally within a sub-grid, or by securing three sub-grids in a row vertically, horizontally, or diagonally on the main grid.  
 <div align='center'><img src='docs/tris.png' width=300></div>
 
-If a player is forced to play in a sub-board that has already been claimed or has already been completed, they can choose any open sub-board to play in.
-The game continues until a player wins the overall game by completing the winning conditions mentioned above, or until all sub-boards and the main board are filled with symbols, resulting in a tie.
+If a player is directed to a sub-grid that is already claimed or completed, they may choose any open sub-grid instead.  
+The game continues until a player achieves the winning conditions or until all sub-grids and the main grid are filled, resulting in a draw.
 
-## AI Algorithm
-The implemented [Minimax algorithm](https://en.wikipedia.org/wiki/Minimax) is a decision-making algorithm that allows the player to determine the best move to make based on the current game state. It evaluates all possible moves by recursively exploring the game tree, assigning scores to each node, and then backtracking to find the optimal move.
+## AI Strategy  
+The implemented [Minimax algorithm](https://en.wikipedia.org/wiki/Minimax) is a decision-making tool that identifies the optimal move by evaluating the current game state. It recursively explores all possible moves within the game tree, assigns scores to each outcome, and backtracks to select the best move.  
 <div align='center'><img src='docs/minimax-tree.png' width=500></div>
 
-Here's how the Minimax algorithm works:
-1. The algorithm considers the current state of the main board and the sub-boards and the player who is about to make a move
-2. It recursively explores the game tree by considering all possible moves. It alternates between the maximizing player (ourself) and the minimizing player (opponent)
-3. For each possible move, the algorithm assigns a score to the resulting game state. The score represents the desirability of that state for the maximizing player. In the case of Ultimate Tic Tac Toe, the scores can be assigned as follows:
-    - If the maximizing player (automated player) wins in a sub-board, a high positive score is assigned
-    - If the minimizing player (opponent) wins in a sub-board, a high negative score is assigned
-    - If the game in a sub-board ends in a tie, a neutral score of 0 is assigned
-    - If the game is not yet decided in a sub-board, the algorithm continues to explore deeper into the game tree
-4. When reaches the specified depth limit or a terminal state, it assigns a score to that game state and propagates it back up the game tree
-5. At each level of the game tree we select the move with the highest score for the maximizing player and the move with the lowest score for the minimizing player (opponent). This selection is based on the assumption that both players are playing optimally.
+Here’s how the Minimax algorithm operates:  
+1. It assesses the current state of the main grid, sub-grids, and the active player.  
+2. It explores the game tree by simulating all possible moves, alternating between the maximizing player (the AI) and the minimizing player (the opponent).  
+3. For each move, a score is assigned to the resulting state, reflecting its desirability for the maximizing player:  
+   - A high positive score is given if the AI wins a sub-grid.  
+   - A high negative score is assigned if the opponent wins a sub-grid.  
+   - A neutral score of 0 is given for a tied sub-grid.  
+   - If the sub-grid is undecided, the algorithm continues exploring deeper.  
+4. When it reaches a predefined depth or a terminal state, it assigns a score and propagates it upward through the game tree.  
+5. At each level, the algorithm selects the move with the highest score for the AI and the lowest score for the opponent, assuming both play optimally.
 
-[Alpha-Beta pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning) is applied during the exploration of the game tree to eliminate unnecessary branches. It maintains two values, alpha and beta, to represent the best scores found so far for the maximizing and minimizing players, respectively. If a better move is found that guarantees a higher score for the maximizing player or a lower score for the minimizing player, the algorithm can prune the remaining branches under that node.
+[Alpha-Beta pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning) optimizes this process by eliminating unnecessary branches in the game tree. It tracks two values—alpha and beta—representing the best scores for the maximizing and minimizing players, respectively. When a move guarantees a better outcome, the algorithm skips exploring less promising branches.
 
-## Result
-The AI implemented at the moment performs quite well, in fact I have reached the Silver League ✔️ . Below I show you some of the hundreds of games played.
+## Outcome  
+The AI performs effectively, achieving a ranking in the Silver League ✔️. Below are examples from several of the many games played.
 
+--- 
+
+This version maintains the original structure and intent while using alternative phrasing to describe the game, rules, and AI strategy.
